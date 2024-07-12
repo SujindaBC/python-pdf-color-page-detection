@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PDF Analysis Result</title>
+  </head>
+  <body>
+    <div>
+      <h1>PDF Analysis Result</h1>
+      <table>
+        <tr>
+          <th>Page</th>
+          <th>Black Ink Usage (%)</th>
+          <th>Color Ink Usage (%)</th>
+          <th>Price (Bath)</th>
+        </tr>
+        {% for page, data in results.items() %}
+        <tr>
+          <td>{{ page }}</td>
+          <td>{{ data.black_ink | round(2) }}</td>
+          <td>{{ data.color_ink | round(2) }}</td>
+          <td>{{ data.price }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="{{ url_for('upload_file') }}">Analyze another PDF</a>
+    </div>
+  </body>
+</html>
